@@ -45,7 +45,12 @@ function js() {
 }
 
 function media() {
-  return gulp.src("src/cdn/**/media/*")
+  return gulp.src("src/cdn/**/media/**")
+    .pipe(gulp.dest("dist/cdn/"))
+}
+
+function libs() {
+  return gulp.src("src/cdn/**/libs/**")
     .pipe(gulp.dest("dist/cdn/"))
 }
 
@@ -64,4 +69,4 @@ function server(argument) {
 }
 
 // exports.default = gulp.series(clean, html);
-exports.default = gulp.series(clean, html, css, js, media, server);
+exports.default = gulp.series(clean, html, css, js, media, libs, server);
