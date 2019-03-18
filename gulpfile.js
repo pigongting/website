@@ -4,7 +4,6 @@ var sass = require('gulp-sass');
 var postcss = require('gulp-postcss');
 var fileinclude  = require('gulp-file-include');
 var uglify  = require('gulp-uglify');
-var sourcemaps  = require('gulp-sourcemaps');
 var browserSync = require('browser-sync').create();
 
 var autoprefixer = require('autoprefixer');
@@ -20,7 +19,7 @@ function html() {
       prefix: '@@',
       basepath: '@file',
       context: {
-        version: '?=1'
+        version: '?='+ new Date().getTime()
       },
       indent: true
      }))
@@ -58,7 +57,7 @@ function server(argument) {
     port: 3000
   });
 
-  gulp.watch("src/**/pages/**/*.html", html);
+  gulp.watch("src/**/*.html", html);
   gulp.watch("src/cdn/**/css/**/*.scss", css);
 
   gulp.watch("dist").on('change', browserSync.reload);
