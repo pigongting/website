@@ -64,6 +64,9 @@ function server(argument) {
 
   gulp.watch("src/**/*.html", html);
   gulp.watch("src/cdn/**/css/**/*.scss", css);
+  gulp.watch("src/cdn/**/javascript/**/*.js", js);
+  gulp.watch("src/cdn/**/media/**", media);
+  gulp.watch("src/cdn/**/libs/**", libs);
 
   gulp.watch("dist").on('change', browserSync.reload);
 }
